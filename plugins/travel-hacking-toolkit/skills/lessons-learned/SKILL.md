@@ -20,7 +20,7 @@ For any route:
 1. **Search Seats.aero with NO source filter.** Pull ALL programs. Show full results sorted by cheapest.
 2. **For EVERY program in results, trace the full reachability chain:**
    a. Direct balance? (Check AwardWallet if connected)
-   b. Transfer path? (Check `data/transfer-partners.json` for EVERY currency: Amex MR, Chase UR, Bilt, Capital One)
+   b. Transfer path? (Check `data/transfer-partners.json` for EVERY currency: Livelo, Esfera, Iupp, Nubank, C6 Atomos, Inter Loop, plus Amex MR, Chase UR, Bilt, Capital One if held)
    c. Alliance chain? Identify the operating airline's alliance (`data/alliances.json`), then find ALL programs in that alliance or with bilateral partnerships (`data/partner-awards.json`), then check which of THOSE programs are reachable via transfer.
    d. Cross-alliance? Check `data/partner-awards.json` `cross_alliance_highlights` and bilateral partners.
 3. **For reachable programs with NO cached Seats.aero data,** check the program's website directly (airfrance.com, united.com, etc.)
@@ -85,6 +85,16 @@ Ask the user for their preferences on the first search. Key questions:
 - Lounge access (changes how long layovers feel)
 
 Store their answers and apply to all subsequent searches in the session.
+
+## Natal / Nordeste (this fork)
+
+- **Home airport is NAT.** Always also quote **REC** and **FOR**. A cheap TAP LIS or an Azul international often lives at REC/FOR, not NAT.
+- **Long-haul:** price NAT positioning to GRU/GIG/BSB plus the award from the hub. Do not assume Qatar, Delta, or TAP depart NAT.
+- **Confirm routes** with `wikipedia-airports` (NAT, REC, FOR pages) before telling the user a carrier flies there.
+- **Skip Southwest** unless the itinerary is US domestic.
+- **Currency BRL, language pt-BR.** Use milheiro for Smiles/LATAM/Azul/Livelo. Seats.aero sources include `smiles` and `azul`; LATAM Pass may be missing — search latam.com.
+- **No holds** on Smiles/LATAM/Azul. Do not recommend "transfer first" as if AA 24h hold existed.
+- **Kiwi/Skiplagged on NAT:** treat as noisy small-market. Prefer Duffel, Google Flights (gl=BR), and the airline site.
 
 ## Duffel Limitations
 

@@ -34,9 +34,9 @@
     "privacyPolicyURL": "https://github.com/borski/travel-hacking-toolkit",
     "termsOfServiceURL": "https://github.com/borski/travel-hacking-toolkit/blob/main/LICENSE",
     "defaultPrompt": [
-      "Plan a trip to Paris with the best flights, hotels, and points strategy",
-      "Compare all award and cash options for SFO to Tokyo",
-      "Find the best hotel booking path with FHR, Edit, and points"
+      "Planeja uma viagem a Lisboa saindo de Natal, Recife e Fortaleza, pontos vs cash",
+      "Calcula o milheiro de uma transferencia Livelo para Smiles com bonus de clube",
+      "Compare all award and cash options for NAT to GRU"
     ],
     "brandColor": "#0F766E",
     "screenshots": []

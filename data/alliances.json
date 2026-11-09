@@ -1,7 +1,7 @@
 {
   "_meta": {
     "description": "Airline alliance membership and loyalty programs. Used for determining which programs can book which airlines.",
-    "last_updated": "2026-03-31",
+    "last_updated": "2026-11-09",
     "staleness_days": 90,
     "notes": "ITA Airways left SkyTeam (Feb-Apr 2025), expected to join Star Alliance first half 2026. SAS moved from Star Alliance to SkyTeam Sep 1, 2024. Fiji Airways upgraded to full oneworld member 2025. Oman Air joined oneworld Jun 30, 2025. Hawaiian Airlines joining oneworld Apr 22, 2026 (6 days away)."
   },
@@ -105,7 +105,10 @@
     {"airline": "Southwest Airlines", "iata": "WN", "country": "USA", "loyalty_program": "Rapid Rewards", "hubs": ["DAL", "MDW", "BWI", "DEN", "LAS"], "note": "No alliance. No partner awards."},
     {"airline": "JetBlue", "iata": "B6", "country": "USA", "loyalty_program": "TrueBlue", "hubs": ["JFK", "BOS", "FLL"], "note": "No alliance. Limited partnerships."},
     {"airline": "Starlux Airlines", "iata": "JX", "country": "Taiwan", "loyalty_program": "COSMILE", "hubs": ["TPE"], "note": "Interested in oneworld. Premium carrier."},
-    {"airline": "Zipair", "iata": "ZG", "country": "Japan", "loyalty_program": null, "hubs": ["NRT"], "note": "JAL low-cost subsidiary. No alliance, no miles program."}
+    {"airline": "Zipair", "iata": "ZG", "country": "Japan", "loyalty_program": null, "hubs": ["NRT"], "note": "JAL low-cost subsidiary. No alliance, no miles program."},
+    {"airline": "GOL Linhas Aereas", "iata": "G3", "country": "Brazil", "loyalty_program": "Smiles", "hubs": ["GRU", "GIG", "BSB", "CNF"], "note": "Not in a global alliance. Smiles partners historically include Air France-KLM, Copa, Aerolineas, Emirates, TAP, Aeromexico, Etihad. Verify on smiles.com.br."},
+    {"airline": "LATAM Airlines", "iata": "LA", "country": "Chile/Brazil", "loyalty_program": "LATAM Pass", "hubs": ["GRU", "GIG", "SCL", "LIM", "BOG"], "note": "Left oneworld in 2020. JV with Delta. LATAM Pass is the Brazilian/South American program. Not covered reliably by Seats.aero — search latam.com."},
+    {"airline": "Azul Linhas Aereas", "iata": "AD", "country": "Brazil", "loyalty_program": "Azul Fidelidade (TudoAzul)", "hubs": ["VCP", "REC", "CNF", "GIG"], "note": "Not in a global alliance. Partnerships historically include United, Copa, TAP, JetBlue, Turkish, Emirates, ITA. Strongest Nordeste domestic network. Seats.aero source: azul."}
   ],
 
   "key_booking_relationships": {
@@ -172,6 +175,33 @@
       "best_for": ["Qatar Qsuites business class (70K saver)", "oneworld partner awards"],
       "search_at": "qatarairways.com",
       "book_at": "qatarairways.com"
+    },
+    "smiles": {
+      "books_on": "GOL plus Smiles partners (AF/KLM and other bilaterals — verify live)",
+      "best_for": ["GOL domestic from NAT/REC/FOR", "positioning NAT-GRU then long-haul partner"],
+      "search_at": "smiles.com.br",
+      "book_at": "smiles.com.br",
+      "note": "No public award hold. Transfer Livelo/Esfera only after the award is on screen. This toolkit never logs in or tickets."
+    },
+    "latam_pass": {
+      "books_on": "LATAM metal plus Delta and other bilaterals — verify live",
+      "best_for": ["LATAM South America", "GRU/GIG connecting to Delta"],
+      "search_at": "latam.com",
+      "book_at": "latam.com",
+      "note": "Left oneworld in 2020. Seats.aero may not list LATAM Pass."
+    },
+    "azul_tudoazul": {
+      "books_on": "Azul plus partners (United, TAP, Copa, others — verify live)",
+      "best_for": ["Azul Nordeste domestic", "TAP via LIS from REC/FOR"],
+      "search_at": "voeazul.com.br",
+      "book_at": "voeazul.com.br"
+    },
+    "tap_miles_go": {
+      "books_on": "TAP plus Star Alliance partners",
+      "best_for": ["REC/FOR to LIS, then Europe", "Star Alliance via a Livelo-reachable program"],
+      "search_at": "flytap.com",
+      "book_at": "flytap.com",
+      "note": "Livelo and some Brazilian banks transfer to TAP. Confirm the partner list before recommending."
     },
     "hyatt_world_of_hyatt": {
       "books_on": "Hyatt properties worldwide",

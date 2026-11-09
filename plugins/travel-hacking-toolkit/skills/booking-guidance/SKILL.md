@@ -57,6 +57,18 @@ The right order:
 
 When holds aren't available, transfer in small batches if you're confident the space will hold (high seat counts, low-popularity dates), or accept the risk. Never transfer your full balance speculatively.
 
+### Brazilian programs (Smiles, LATAM Pass, Azul)
+
+No public hold comparable to AA 24h. The user must see the award on the airline site, then transfer Livelo/Esfera/bank points themselves. **This toolkit never logs in, never transfers, never tickets, never buys miles.** Point at:
+
+- Smiles: https://www.smiles.com.br
+- LATAM Pass: https://www.latamairlines.com
+- Azul Fidelidade: https://www.voeazul.com.br
+- Livelo: https://www.livelo.com.br
+- Esfera: https://www.esfera.com.vc
+
+Phone numbers change. Tell the user to confirm atendimento on those sites rather than citing a possibly stale 0300.
+
 ## Phone Numbers for Major Programs
 
 Some awards must be booked by phone. Memorize or save these.

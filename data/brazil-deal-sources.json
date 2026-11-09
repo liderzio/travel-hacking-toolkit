@@ -1,0 +1,104 @@
+{
+  "_meta": {
+    "last_updated": "2026-11-09",
+    "staleness_days": 90,
+    "description": "Fontes brasileiras de promos de passagens, milhas e transferencias. Use para MONITORAR e para aprender a ler um post. Nunca copie preco, milheiro ou percentual de bonus de um artigo como fato vigente.",
+    "hard_rules": [
+      "Blog price is a snapshot, not a live quote.",
+      "Always recompute milheiro with the calculator using the numbers printed in THAT post, then tell the user to confirm on the program site.",
+      "If the post has no date, treat it as stale.",
+      "Affiliate links are the business model — they do not make the math wrong, but they do bias headlines toward 'buy now'."
+    ]
+  },
+  "how_to_read_any_post": {
+    "extract": [
+      "Programa de origem (Livelo, Esfera, Iupp, Nubank, C6, Inter, o proprio Smiles/LATAM/Azul)",
+      "Programa de destino",
+      "Ratio baseline (quase sempre 1:1; se nao for, anote)",
+      "Bonus percentual da campanha",
+      "Bonus extra de clube, se houver, e qual plano",
+      "Preco da milha/ponto COMPRADO, se for compra — em BRL",
+      "Validade da oferta (data/hora, feriado, 'ate esgotar')",
+      "Restricoes (pontos a expirar, teto de transferencia, so app, so clube)"
+    ],
+    "then": [
+      "Rode `python3 skills/milheiro/scripts/calc_milheiro.py` com esses numeros.",
+      "Nao cite o milheiro do blog como se fosse o seu. Cite o milheiro que VOCE calculou, e de onde saiu cada input.",
+      "Abra o site do programa para confirmar que a campanha ainda esta no ar.",
+      "Se for tarifa cash, confirme no Google Flights / site da cia com as DATAS e AEROPORTOS do alerta (NAT vs REC vs FOR mudam tudo)."
+    ],
+    "red_flags": [
+      "Post sem data ou 'atualizado em' com mais de 7 dias para bonus de transferencia.",
+      "Milheiro redondo demais (R$ 8,00) sem mostrar a conta.",
+      "Erro de tarifa (error fare) — pode sumir em minutos; nao trate como inventario.",
+      "Passagem premio sem mencionar taxas (embarque, DU, YQ).",
+      "Headline de 100% de bonus sem dizer se clube ja esta incluso."
+    ]
+  },
+  "sources": [
+    {
+      "id": "passageiro_de_primeira",
+      "name": "Passageiro de Primeira",
+      "url": "https://www.passageirodeprimeira.com",
+      "kind": "analise de milhas / milheiro / clubes / transferencias",
+      "how_to_read": "Posts de transferencia e compra quase sempre trazem tabela de milheiro por cenario (com/sem clube, com/sem bonus). Use a tabela como ROTEIRO da conta, nao como cotacao. Extraia preco, bonus e plano de clube e recalte. Bons para entender empilhamento de clube + campanha.",
+      "good_for": ["custo do milheiro", "Clube Smiles/Livelo/LATAM/Azul", "bonus Livelo/Esfera", "comparar compra vs transferencia"],
+      "cadence": "varias vezes por semana em temporada de promo",
+      "staleness": "bonus de transferencia: trate como vencido se o post tem mais de 7 dias, mesmo que a materia ainda rode."
+    },
+    {
+      "id": "melhores_destinos",
+      "name": "Melhores Destinos",
+      "url": "https://www.melhoresdestinos.com.br",
+      "kind": "alertas de tarifa cash, promo aerea, às vezes milhas",
+      "how_to_read": "Alertas de passagem cash trazem faixa de preco, cias, e em geral um calendario. Confirme SEMPRE origem (muitos alertas sao GRU/GIG/BSB, nao NAT). Recife e Fortaleza aparecem em alertas de TAP e internacionais do Nordeste. Error fares e 'passagem por R$ X' podem ja ter acabado. Nao use o preco do alerta como fato — busque a data.",
+      "good_for": ["passagem cash barata", "calendario de promocao GOL/LATAM/Azul/TAP", "Europa via Lisboa saindo do Nordeste"],
+      "cadence": "diario",
+      "staleness": "alerta cash: horas, nao dias. Se nao achar a tarifa, ela acabou."
+    },
+    {
+      "id": "pontos_pra_voar",
+      "name": "Pontos pra Voar",
+      "url": "https://www.pontospravoar.com.br",
+      "kind": "educacao em milhas, promos, estrategas de acumulo",
+      "how_to_read": "Materias longas explicam clube, cartao e transferencia. Separe o que e tutorial (estavel) do que e campanha (datada). Numeros de milheiro em tutoriais sao exemplos. Campanhas no rodape/banner precisam de data.",
+      "good_for": ["entender clube vs compra avulsa", "para onde transferir", "armadilhas de pontos a expirar"],
+      "cadence": "semanal / por campanha",
+      "staleness": "tutoriais duram meses; tabelas de bonus nao."
+    },
+    {
+      "id": "viaja_na_milha",
+      "name": "Viaja na Milha",
+      "url": "https://www.viajanamilha.com.br",
+      "kind": "promos de transferencia, clubes, milheiro",
+      "how_to_read": "Foco em campanha. Extraia origem, destino, bonus, clube, teto. Recalcule. Desconfie de 'melhor milheiro do ano' sem a conta aberta.",
+      "good_for": ["bonus Livelo/Esfera", "compra de milhas Smiles/LATAM/Azul", "comparativo rapido de milheiro"],
+      "cadence": "por campanha",
+      "staleness": "7 dias para bonus; 48h para compra relampago."
+    },
+    {
+      "id": "farejador_de_milhas",
+      "name": "Farejador de Milhas",
+      "url": "https://www.farejadordemilhas.com.br",
+      "kind": "busca de disponibilidade premio (estilo seats.aero brasileiro)",
+      "how_to_read": "Ferramenta de ESPACO premio, nao de preco cash. Use para ver se existe asento Smiles/LATAM/Azul/TAP etc. Disponibilidade some. Nao emite, nao transfere, nao loga na conta do usuario — o usuario busca e emite no site da cia. Combine com Seats.aero para programas internacionais.",
+      "good_for": ["espaco premio domestico BR e alguns internacionais", "calendario de disponibilidade"],
+      "cadence": "ao vivo / cache curto",
+      "staleness": "minutos a horas. Sempre reconfirme no site da cia antes de o usuario transferir pontos."
+    }
+  ],
+  "optional_cash_trackers": [
+    {
+      "id": "google_flights",
+      "name": "Google Flights",
+      "url": "https://www.google.com/travel/flights",
+      "note": "Use gl=BR e moeda BRL. Cotar NAT, REC e FOR. Nao substitui GDS (Duffel) mas e o melhor rastreador de preco cash no Brasil."
+    },
+    {
+      "id": "seats_aero",
+      "name": "Seats.aero",
+      "url": "https://seats.aero",
+      "note": "Cobre Smiles e Azul entre os 27 programas. LATAM Pass pode nao aparecer — busque no site LATAM. Nunca filtre a fonte na primeira busca."
+    }
+  ]
+}

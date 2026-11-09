@@ -26,7 +26,7 @@
         "methodology": "Most conservative and theoretically rigorous. Frames value as 'amount at which you are indifferent to holding miles versus cash,' not 'how much airfare a mile can buy.' Accounts for devaluation risk, restricted use, and foregone mile-earning on award tickets. Older data but methodology is the gold standard."
       }
     },
-    "last_updated": "2026-03-21",
+    "last_updated": "2026-11-09",
     "staleness_days": 45,
     "staleness_note": "TPG, UP, and OMAAT update monthly. VFTW updates less frequently. If last_updated is more than 45 days ago, re-fetch from source URLs and update.",
     "methodology": "Each program has a 'floor' (conservative, min across sources) and 'ceiling' (optimistic, max across sources). Default to FLOOR for decision-making. A redemption that beats the ceiling is genuinely exceptional. A redemption below the floor is objectively poor. TPG systematically overvalues; VFTW/OMAAT are more conservative and more useful for 'should I burn points on this?' decisions. See: https://viewfromthewing.com/why-the-points-guy-systematically-overstates-the-value-of-miles/"
@@ -358,6 +358,65 @@
       "floor": 0.7,
       "ceiling": 1.1,
       "sources": { "tpg": 1.1, "up": 0.9, "omaat": 0.7, "vftw": 0.8 }
+    }
+  },
+  "brazilian_milheiro": {
+    "_meta": {
+      "unit": "BRL per 1,000 miles (custo/valor do milheiro)",
+      "methodology": "Community heuristics for Brazilian programs, NOT TPG/OMAAT/VFTW. Floor = typical good acquisition cost. Ceiling = strong redemption vs cash in BRL. Always recompute from a live cash fare and a caller-supplied purchase/transfer price via the milheiro skill. Never copy a blog milheiro as current fact.",
+      "do_not_mix_with_cpp": "These numbers are BRL/1000, not USD cents per point. Do not drop them into a cpp column."
+    },
+    "livelo": {
+      "name": "Livelo",
+      "floor": 14,
+      "ceiling": 30,
+      "note": "Transferable; value is the best reachable airline milheiro after bonus. Heuristic only."
+    },
+    "esfera": {
+      "name": "Esfera (Santander)",
+      "floor": 14,
+      "ceiling": 30,
+      "note": "Same idea as Livelo. Confirm current transfer bonus before valuing."
+    },
+    "iupp": {
+      "name": "Itau Iupp",
+      "floor": 14,
+      "ceiling": 28,
+      "note": "Primarily a feeder into Smiles/LATAM/Azul."
+    },
+    "nubank": {
+      "name": "Nubank Rewards / Ultravioleta",
+      "floor": 14,
+      "ceiling": 28,
+      "note": "Value is the transfer, not portal cashback, when hunting awards."
+    },
+    "c6_atomos": {
+      "name": "C6 Atomos",
+      "floor": 14,
+      "ceiling": 28
+    },
+    "inter_loop": {
+      "name": "Inter Loop",
+      "floor": 14,
+      "ceiling": 28
+    },
+    "smiles": {
+      "name": "GOL Smiles",
+      "floor": 14,
+      "ceiling": 40,
+      "note": "Acquisition floor is what you pay to buy/transfer in. Redemption ceiling depends on GOL dynamic awards — compute per itinerary in BRL."
+    },
+    "latam_pass": {
+      "name": "LATAM Pass",
+      "floor": 14,
+      "ceiling": 40,
+      "note": "Dynamic. South America on LATAM metal is the core use. Compute per itinerary."
+    },
+    "azul": {
+      "name": "Azul Fidelidade (TudoAzul)",
+      "floor": 14,
+      "ceiling": 40,
+      "note": "Azul domestic from NAT/REC/FOR is often the highest real-world redemption. Compute per itinerary."
     }
   }
 }

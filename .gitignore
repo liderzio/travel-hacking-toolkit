@@ -24,3 +24,9 @@ Thumbs.db
 
 # Trip logs (trip-log skill) — local only
 trips/logs/
+
+# Personal travel profile (copy from profile.example.json). Public repo — never commit balances, names, cards, or family data.
+profile.json
+profile.local.json
+config/profile.json
+**/profile.local.json

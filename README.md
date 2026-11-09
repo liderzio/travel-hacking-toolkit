@@ -4,6 +4,8 @@ AI-powered travel hacking with points, miles, and award flights. Drop-in skills 
 
 Ask your AI to find you a 60,000-mile business class flight to Tokyo. It'll search award availability across 27 mileage programs, compare against cash prices, check your loyalty balances, and tell you the best play.
 
+This fork adds a **Brazilian / Natal (NAT)** layer on top of the original toolkit: Livelo, Esfera, Smiles, LATAM Pass, Azul, bank points, custo do milheiro in BRL, and REC/FOR as alternate airports. See **[Uso no Brasil](#uso-no-brasil-pt-br)** below.
+
 ## Quick Start
 
 ### Install via plugin (no clone)
@@ -220,6 +222,8 @@ Also use **tripadvisor** (under Destinations) for hotel ratings, rankings, subra
 |-------|-------------|---------|
 | **american-airlines** | AAdvantage balance and elite status. AwardWallet does not support AA. Docker: `ghcr.io/borski/aa-miles-check`. | None (requires Patchright) |
 | **awardwallet** | All loyalty balances, elite status, history. | AwardWallet Business |
+| **brazil-loyalty** | Programas BR de milhas e pontos, clubes e mapa de transferencia. Ratios baseline, bonus sempre a verificar. | None (local data) |
+| **milheiro** | Custo do milheiro em BRL. Compra, clube, bonus de transferencia e resgate. Precos sao sempre input, nunca fato. | None (free, local data) |
 | **transfer-partners** | Cheapest transfer path from credit card points to mileage programs. | None (local data) |
 | **wheretocredit** | Mileage earning rates by airline and booking class across 50+ programs. | None (free) |
 <!-- END: readme:loyalty -->
@@ -246,6 +250,7 @@ These skills carry the deep institutional knowledge that used to live in CLAUDE.
 | **award-holds** | Per-program rules for placing award flight tickets on hold. Covers 9 programs with holds (AA 24h online, LH 5 days, FB 3 days, CX 2 days, Turkish 2 days, Virgin Atlantic 1-2 days, ANA 2 days, Emirates 1 day, EVA online), Singapore as agent-discretionary, and the negative space (UA/AS/DL/Aeroplan/BA/Qatar/Korean/Etihad - many programs still do not allow holds). |
 | **award-sweet-spots** | Catalog of legendary, excellent, and good award redemptions with current rates and devaluation history. |
 | **booking-guidance** | The booking flow, hold-before-transfer rule, phone numbers for major programs. |
+| **brazil-deals** | Fontes BR de promo (PdP, Melhores Destinos, Viaja na Milha, Farejador). Como ler, nunca copiar preco. |
 | **cabin-codes** | IATA cabin codes (F/J/W/Y) and saver fare class codes (X/I/O) for partner-bookable inventory. |
 | **fallback-and-resilience** | What to do when each tool fails. Tool-by-tool fallback paths. |
 | **flight-search-strategy** | The canonical multi-source search workflow. Source priority (Duffel > Ignav > Google Flights > others), market selection for international routes, source accuracy hierarchy, common failure modes. |
@@ -380,9 +385,9 @@ Skiplagged, Kiwi.com, Trivago, Ferryhopper, and Airbnb need no setup at all. Lit
   ├─ Premium programs  → premium-hotels (FHR/THC/Edit)
   └─ Discount pricing  → ticketsatwork (often beats portals 10-30%)
 
-"Should I use points or cash?"
-  └─→ trip-calculator (CPP analysis + opportunity cost)
-      Reference: points-valuations (floor/ceiling rules)
+"Should I use points or cash?" / "qual o milheiro?"
+  └─→ trip-calculator (CPP) e milheiro (BRL / 1.000)
+      Reference: points-valuations, brazil-loyalty
 
 "Which of my points should I use?"
   └─→ transfer-partners (cheapest transfer path)
@@ -408,6 +413,71 @@ The **orchestration skills** (`trip-planner`, `compare-flights`, `compare-hotels
 
 The **reference skills** (`flight-search-strategy`, `points-valuations`, `partner-awards`, `alliances`, `award-sweet-spots`, `cabin-codes`, `hotel-chains`, `fallback-and-resilience`, `booking-guidance`, `lessons-learned`) auto-load on relevant context to provide deep institutional knowledge without you needing to invoke them explicitly.
 
+## Uso no Brasil (pt-BR)
+
+Este fork parte do [borski/travel-hacking-toolkit](https://github.com/borski/travel-hacking-toolkit) e adapta o agente para quem mora em **Natal (NAT)**, com **Recife (REC)** e **Fortaleza (FOR)** como aeroportos alternativos. A arquitetura original (skills em Markdown, JSON em `data/`, MCPs) permanece.
+
+### O que muda na pratica
+
+- **Idioma:** respostas ao usuario em portugues brasileiro.
+- **Moeda:** BRL. A metrica de milhas e o **custo/valor do milheiro** (R$ por 1.000 milhas), nao so cpp em dolar.
+- **Origem padrao:** toda busca de voo comeca em NAT e tambem cota REC e FOR. Long-haul costuma pedir posicionamento NAT→GRU/GIG/BSB.
+- **Programas:** Smiles (GOL), LATAM Pass, Azul Fidelidade (TudoAzul), Livelo, Esfera, Itaú Iupp, Nubank Ultravioleta, C6 Átomos, Inter Loop, com caminhos para TAP, Iberia, Qatar Privilege Club e AAdvantage quando o parceiro estiver listado.
+- **Clubes:** Clube Smiles, Clube Livelo, Clube LATAM Pass, Clube Azul entram na conta do milheiro. O **preco da mensalidade e sempre um input seu** — o toolkit nao guarda tabela de preco vigente.
+
+### Perfil local (nao commitar)
+
+O repositorio e **publico**. Copie o template e preencha so o que quiser que o agente use:
+
+```bash
+cp profile.example.json profile.json
+```
+
+`profile.json` esta no `.gitignore`. Nao coloque nome, cartao, familiares, senha, PNR nem saldo se nao quiser. `club_tier` e a chave do plano (`1000`, `5000`), nao o preco.
+
+### Calculadora de milheiro
+
+Tudo que tem preco e argumento. Exemplos ilustrativos (nao sao oferta vigente):
+
+```bash
+# Compra de milhas com bonus de campanha + bonus de clube (soma, padrao BR)
+python3 skills/milheiro/scripts/calc_milheiro.py purchase \
+  --price 270 --miles 10000 --bonus-pct 80 --club-bonus-pct 30 --json
+
+# Clube: informe a mensalidade que voce viu HOJE no site
+python3 skills/milheiro/scripts/calc_milheiro.py club \
+  --monthly-fee 50 --monthly-miles 1000 --months 12 --json
+
+# Transferencia Livelo -> cia (ratio 1:1 + bonus)
+python3 skills/milheiro/scripts/calc_milheiro.py transfer \
+  --source-milheiro 14 --ratio 1 --bonus-pct 100 --club-bonus-pct 40 --json
+
+# Premio vs cash
+python3 skills/milheiro/scripts/calc_milheiro.py redeem \
+  --cash 1800 --taxes 90 --miles 20000 --json
+```
+
+Testes: `python3 -m unittest discover -s skills/milheiro/tests`.
+
+### Fontes de promo (nunca copie o preco)
+
+Passageiro de Primeira, Melhores Destinos, Pontos pra Voar, Viaja na Milha e Farejador de Milhas servem para **monitorar**. O skill `brazil-deals` ensina a ler o post: extraia data, bonus, clube, teto; recalte o milheiro; confirme no site da Livelo/Esfera/cia. Um milheiro publicado no blog e um snapshot, nao um fato.
+
+### O que este toolkit nao faz
+
+Nao entra na sua conta Smiles/LATAM/Azul/Livelo/banco, nao compra milhas, nao transfere pontos, nao emite passagem. Ele monta a conta e o caminho; voce executa no site do programa.
+
+### Prompts de exemplo
+
+```
+Planeja 10 dias em Lisboa saindo de Natal em setembro, melhor entre pontos e cash.
+Cota NAT, REC e FOR para Buenos Aires em abril, dois adultos, economica.
+Livelo com 80% + clube 40% para Azul: qual o milheiro?
+Essa compra de Smiles a R$ 270 os 10 mil com 80% de bonus vale a pena?
+```
+
+Skills novas: `milheiro`, `brazil-loyalty`, `brazil-deals`. Dados: `data/brazil-loyalty.json`, `data/brazil-deal-sources.json`, mais as chaves BR em `data/transfer-partners.json`.
+
 ## The Travel Hacking Workflow
 
 The core question: **"Should I burn points or pay cash?"**
@@ -421,6 +491,7 @@ The core question: **"Should I burn points or pay cash?"**
 ### Example Prompts
 
 ```
+"Planeja 10 dias em Lisboa saindo de NAT/REC/FOR em setembro"
 "Plan a trip to Paris Aug 11-15 in business class"
 "Find me the cheapest business class award from SFO to Tokyo in August"
 "When's the cheapest time to fly SFO to NRT on points?"

@@ -25,6 +25,8 @@ The data file is a snapshot; bonuses commonly end on month-end dates between ref
 - **Sanity-checking whether a "good bonus" actually wins.** Hotel bonuses especially (Chase UR to IHG 70%, Chase UR to Marriott 50-70%) often look great in headlines but lose to the Chase Travel portal (dynamic Points Boost on CSR/CSP, ~1.5-2.0 cpp on select bookings; not a guaranteed floor). Always pull the actual portal quote and run the math against it, not against an assumed rate.
 - **Identifying stackable bonuses.** Aeroplan Visa cardholders stack a 10% cardholder bonus on top of any Chase UR to Aeroplan promotion.
 
+Brazilian coalition bonuses (Livelo, Esfera, Iupp, Nubank, C6, Inter) are **not** in this file. Load `brazil-deals` and recompute with `milheiro`. Do not copy a Passageiro de Primeira milheiro as a live quote.
+
 ## When NOT to Use
 
 - Transfer ratios in general (without an active bonus). Use [transfer-partners](../transfer-partners/SKILL.md) for the standard ratios.

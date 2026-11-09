@@ -16,12 +16,15 @@ Use Wikipedia as a **route discovery and sanity-check source** for airport desti
 
 Wikipedia is **not a booking source** and not a real-time schedule source. Use it to discover likely routes, then confirm them with airline or fare tools.
 
+For this Brazil fork, NAT / REC / FOR are the default trio. TAP, Azul international, and seasonal long-haul move between those three airports. Pull all three Wikipedia destination tables before telling the user a carrier does or does not fly the Nordeste.
+
 ## Best Use Cases
 
 - "What destinations does SAN serve?"
 - "Does Southwest fly SAN -> EUG?"
 - "What airports can I use for a late split return?"
 - "Which airline serves this small airport nonstop?"
+- "A TAP ainda voa Recife, Fortaleza ou Natal?" (always check NAT, REC, and FOR before assuming Nordeste long-haul)
 
 ## Workflow
 

@@ -15,7 +15,7 @@ The user invoked this skill explicitly. Run a guided trip planning workflow that
 
 If the user already gave details in their prompt arguments, use those. Otherwise, ask in this order, one question at a time. Don't fire all the questions at once.
 
-1. **Where?** Destination(s). Accept regions ("Scandinavia"), cities ("Tokyo"), or specific airports.
+1. **Where?** Destination(s). Accept regions ("Scandinavia"), cities ("Tokyo"), or specific airports. Default origin is NAT; also quote REC and FOR.
 2. **When?** Departure month or date range. Note flexibility: "exact dates" vs "any week in March" matters a lot for award availability.
 3. **Who?** Number of travelers, ages if children/infants. The toolkit supports infant pricing and seat configurations.
 4. **What class?** Economy / premium economy / business / first. Default to economy if unstated.
@@ -34,7 +34,7 @@ Once you have the inputs:
 4. **Run cash search in parallel** via duffel, ignav, google-flights, and the relevant free MCPs (Skiplagged, Kiwi).
 5. **Run award search in parallel** via seats-aero across ALL programs (never filter to one program upfront — see lessons-learned).
 6. **Cross-reference** with transfer-partners and transfer-bonuses to find the cheapest currency you actually have.
-7. **Apply points-valuations** to compute cents-per-point on each award option.
+7. **Apply milheiro (BRL)** for Brazilian programs and **points-valuations** cpp for US/global programs.
 8. **Surface anything from award-sweet-spots** that matches this route.
 9. **Check stopovers** if the destination involves a connection. Multi-city trips might unlock "two destinations for the price of one" via Aeroplan, Alaska, or Flying Blue.
 10. **Show the math** in a markdown table. One row per option, ranked. Columns: program, miles cost, cash co-pay, total $ value, cpp, hold-before-transfer rule, recommendation.
@@ -55,7 +55,9 @@ Don't dump all of these at once. Lead with the flight recommendation. Mention ho
 
 - Markdown tables for results
 - Bold the winning option
-- Always show cpp on award redemptions
+- Always show milheiro (BRL / 1.000) on Brazilian award redemptions, and cpp on US/global ones
+- Answer the user in pt-BR; cash in BRL
+- Do not log in, buy miles, transfer points, or issue tickets
 - Cite the source skill for each piece of data ("via seats-aero", "via awardwallet")
 - End with a "Next steps" section listing concrete follow-up commands the user can issue. Examples: "Next steps: I can check specific dates around X, search hotels at Y, look up sweet-spot redemptions you're not using." This must be a declarative statement, NOT a question. Don't write "Want me to..." or "Should I..." (the system prompt's PRE-OUTPUT GATE bans those patterns).
 

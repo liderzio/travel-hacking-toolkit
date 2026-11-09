@@ -62,6 +62,8 @@ Skill listings below are auto-generated from `skills/*/SKILL.md` frontmatter by 
 <!-- BEGIN: llms:loyalty -->
 - [American Airlines](https://github.com/borski/travel-hacking-toolkit/blob/main/skills/american-airlines/SKILL.md): AAdvantage balance and elite status. AwardWallet does not support AA. Docker: `ghcr.io/borski/aa-miles-check`.
 - [Awardwallet](https://github.com/borski/travel-hacking-toolkit/blob/main/skills/awardwallet/SKILL.md): All loyalty balances, elite status, history.
+- [Brazil Loyalty](https://github.com/borski/travel-hacking-toolkit/blob/main/skills/brazil-loyalty/SKILL.md): Programas BR de milhas e pontos, clubes e mapa de transferencia. Ratios baseline, bonus sempre a verificar.
+- [Milheiro](https://github.com/borski/travel-hacking-toolkit/blob/main/skills/milheiro/SKILL.md): Custo do milheiro em BRL. Compra, clube, bonus de transferencia e resgate. Precos sao sempre input, nunca fato.
 - [Transfer Partners](https://github.com/borski/travel-hacking-toolkit/blob/main/skills/transfer-partners/SKILL.md): Cheapest transfer path from credit card points to mileage programs.
 - [Wheretocredit](https://github.com/borski/travel-hacking-toolkit/blob/main/skills/wheretocredit/SKILL.md): Mileage earning rates by airline and booking class across 50+ programs.
 <!-- END: llms:loyalty -->
@@ -84,6 +86,7 @@ These skills carry institutional knowledge that the agent loads when triggered. 
 - [Award Holds](https://github.com/borski/travel-hacking-toolkit/blob/main/skills/award-holds/SKILL.md): Per-program rules for placing award flight tickets on hold. Covers 9 programs with holds (AA 24h online, LH 5 days, FB 3 days, CX 2 days, Turkish 2 days, Virgin Atlantic 1-2 days, ANA 2 days, Emirates 1 day, EVA online), Singapore as agent-discretionary, and the negative space (UA/AS/DL/Aeroplan/BA/Qatar/Korean/Etihad - many programs still do not allow holds).
 - [Award Sweet Spots](https://github.com/borski/travel-hacking-toolkit/blob/main/skills/award-sweet-spots/SKILL.md): Catalog of legendary, excellent, and good award redemptions with current rates and devaluation history.
 - [Booking Guidance](https://github.com/borski/travel-hacking-toolkit/blob/main/skills/booking-guidance/SKILL.md): The booking flow, hold-before-transfer rule, phone numbers for major programs.
+- [Brazil Deals](https://github.com/borski/travel-hacking-toolkit/blob/main/skills/brazil-deals/SKILL.md): Fontes BR de promo (PdP, Melhores Destinos, Viaja na Milha, Farejador). Como ler, nunca copiar preco.
 - [Cabin Codes](https://github.com/borski/travel-hacking-toolkit/blob/main/skills/cabin-codes/SKILL.md): IATA cabin codes (F/J/W/Y) and saver fare class codes (X/I/O) for partner-bookable inventory.
 - [Fallback And Resilience](https://github.com/borski/travel-hacking-toolkit/blob/main/skills/fallback-and-resilience/SKILL.md): What to do when each tool fails. Tool-by-tool fallback paths.
 - [Flight Search Strategy](https://github.com/borski/travel-hacking-toolkit/blob/main/skills/flight-search-strategy/SKILL.md): The canonical multi-source search workflow. Source priority (Duffel > Ignav > Google Flights > others), market selection for international routes, source accuracy hierarchy, common failure modes.
