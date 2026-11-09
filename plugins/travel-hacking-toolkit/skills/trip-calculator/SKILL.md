@@ -50,6 +50,17 @@ opportunity_cost = points_needed × floor_cpp / 100
 
 If the cash price is lower than the opportunity cost, pay cash. If higher, use points.
 
+### Custo do milheiro (Brazil)
+
+For Smiles, LATAM Pass, Azul, Livelo and other BR currencies, use the `milheiro` skill instead of USD cpp:
+
+```
+custo_do_milheiro = total_pago_BRL * 1000 / milhas_creditadas
+valor_do_milheiro = (tarifa_cash_BRL - taxas_do_premio_BRL) * 1000 / milhas
+```
+
+If valor > custo → use points. If valor <= custo → pay cash. Heuristic bands live in `data/brazil-loyalty.json`. All prices are caller-supplied — never invent a club fee.
+
 ### The Decision Framework
 
 ```

@@ -11,6 +11,8 @@ summary: Catalog of legendary, excellent, and good award redemptions with curren
 
 When making recommendations, cross-reference against known sweet spots. If a route matches a sweet spot, flag it prominently.
 
+For a traveler in Natal, also read `brazil_nordeste` in `data/sweet-spots.json` (TAP via REC/FOR, Azul domestic, Smiles+AF/KLM via GRU, Livelo→Qatar/Iberia when listed). Those entries deliberately avoid live mileage quotes — compute milheiro from current cash.
+
 ## Tier System
 
 Sweet spots are ranked by tier:

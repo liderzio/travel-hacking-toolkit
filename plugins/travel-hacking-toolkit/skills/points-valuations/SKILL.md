@@ -70,6 +70,10 @@ Some programs pass through massive fuel surcharges on award tickets. The worst o
 
 A 50K mile award with $600 in surcharges is NOT the same value as 50K with $5.60 in taxes. Always flag the expected surcharge level when recommending an award.
 
+## Brazilian programs: use milheiro, not USD cpp
+
+For Smiles, LATAM Pass, Azul, Livelo, Esfera, Iupp, Nubank, C6 Atomos, and Inter Loop, the decision metric is **custo/valor do milheiro in BRL** (`skills/milheiro`). Floor/ceiling heuristics live in `data/points-valuations.json` → `brazilian_milheiro` (BRL per 1.000, not cents). Do not mix those numbers into a cpp column. Load `brazil-loyalty` for reachability and `brazil-deals` for dated campaign bonuses. Never treat a blog milheiro as a live quote.
+
 ## Transfer Bonuses Change Everything
 
 Programs frequently run 20-50% transfer bonuses (e.g., "transfer Amex MR to Virgin Atlantic and get 30% bonus miles"). These are time-limited and change the optimal play entirely.

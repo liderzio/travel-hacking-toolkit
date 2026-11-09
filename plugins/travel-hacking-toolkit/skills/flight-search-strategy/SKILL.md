@@ -28,7 +28,7 @@ This is not a pick-one list. Each source returns different results, different pr
 
 Skiplagged and Kiwi are keyless MCP servers — they are available in every properly launched session. Attempt the tool call before ever claiming MCP is unavailable, and never substitute improvised browser scraping for these sources (see `fallback-and-resilience`).
 
-Always add Seats.aero for award comparison. Use the Partner API skill when `SEATS_AERO_API_KEY` is set. Without a key, use the `seats-aero` MCP (`get_flights`), which covers flights departing in the next 60 days. See the `seats-aero` skill for the routing table. Always run the Southwest skill if SW flies the route.
+Always add Seats.aero for award comparison. Use the Partner API skill when `SEATS_AERO_API_KEY` is set. Without a key, use the `seats-aero` MCP (`get_flights`), which covers flights departing in the next 60 days. See the `seats-aero` skill for the routing table. Run the Southwest skill only if SW flies the route (US domestic). For this Brazil fork, default origin is NAT; also search REC and FOR in the same batch. Use Google Flights `gl=BR` and Ignav `market: "BR"`. Present cash in BRL.
 
 Don't skip sources. Don't assume one source has everything. Present the combined results with the best options highlighted regardless of which source found them.
 
@@ -84,8 +84,8 @@ Different country markets return different prices for the same route. Searching 
 
 **Always try multiple markets for international flights:**
 
-1. **Departure country market first** (e.g., `&gl=US` for flights from the US)
-2. **Destination country market** (e.g., `&gl=JP` for flights to Japan)
+1. **Departure country market first** (`&gl=BR` / Ignav `market: "BR"` from NAT/REC/FOR)
+2. **Destination country market** (e.g., `&gl=PT` for Lisbon, `&gl=JP` for Japan)
 3. **Ask the user before trying more** (e.g., third countries, VPN markets)
 
 This applies to:

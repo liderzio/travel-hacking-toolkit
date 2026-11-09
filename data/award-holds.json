@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "last_updated": "2026-07-12",
+    "last_updated": "2026-11-09",
     "staleness_days": 90,
     "description": "Per-program rules for placing award flight tickets on hold. Holds let you reserve award space without paying or transferring points yet. Critical for transferable-currency bookings (Amex MR, Chase UR, etc.) where the transfer takes hours to days. Includes 9 programs with holds (AA, Lufthansa M&M, Flying Blue, Cathay Asia Miles, Turkish, Virgin Atlantic, ANA, Emirates, EVA Air), Singapore KrisFlyer as agent-discretionary, and the negative space (many programs do NOT allow holds). Sourced from Frugal Flyer (canonical 2024 list), Upgraded Points, One Mile at a Time, and Points Miles & Bling (2025-2026), cross-checked against airline-specific sources. ANA, Emirates, and EVA were added from OMAAT/PMB/UP after they were reported allowing holds; Frugal Flyer's 2024 list omitted them, so they carry LIKELY confidence.",
     "primary_sources_general": [
@@ -413,6 +413,64 @@
       ],
       "last_verified": "2026-04-29",
       "confidence": "LIKELY"
+    },
+    {
+      "id": "smiles",
+      "name": "GOL Smiles",
+      "alliance": "non-aligned",
+      "category": "negative",
+      "max_hold_days": 0,
+      "hold_fee_usd": null,
+      "phone_booking_fee_usd": null,
+      "self_serve_online": false,
+      "partner_awards": "no",
+      "phone_us": null,
+      "phone_br": "Confirm current number on smiles.com.br",
+      "restrictions": "No published award hold comparable to AA 24h. Brazilian play is: open the award on smiles.com.br, then transfer Livelo/Esfera. Transfers are irreversible. This toolkit never logs in or tickets.",
+      "recent_changes": null,
+      "sources": [
+        "https://www.smiles.com.br"
+      ],
+      "last_verified": "2026-11-09",
+      "confidence": "LIKELY"
+    },
+    {
+      "id": "latam_pass",
+      "name": "LATAM Pass",
+      "alliance": "non-aligned",
+      "category": "negative",
+      "max_hold_days": 0,
+      "hold_fee_usd": null,
+      "phone_booking_fee_usd": null,
+      "self_serve_online": false,
+      "partner_awards": "no",
+      "phone_us": null,
+      "restrictions": "No published award hold. Confirm space on latam.com before transferring. Toolkit never logs in.",
+      "recent_changes": null,
+      "sources": [
+        "https://www.latamairlines.com"
+      ],
+      "last_verified": "2026-11-09",
+      "confidence": "LIKELY"
+    },
+    {
+      "id": "azul_tudoazul",
+      "name": "Azul Fidelidade (TudoAzul)",
+      "alliance": "non-aligned",
+      "category": "negative",
+      "max_hold_days": 0,
+      "hold_fee_usd": null,
+      "phone_booking_fee_usd": null,
+      "self_serve_online": false,
+      "partner_awards": "no",
+      "phone_us": null,
+      "restrictions": "No published award hold. Confirm space on voeazul.com.br before transferring.",
+      "recent_changes": null,
+      "sources": [
+        "https://www.voeazul.com.br"
+      ],
+      "last_verified": "2026-11-09",
+      "confidence": "LIKELY"
     }
   ],
   "decision_rules": [
@@ -435,7 +493,10 @@
       "Iberia Plus",
       "Etihad Guest (not canonical, but no published policy)",
       "Qatar Privilege Club",
-      "Korean SKYPASS"
+      "Korean SKYPASS",
+      "GOL Smiles",
+      "LATAM Pass",
+      "Azul Fidelidade (TudoAzul)"
     ],
     "implication": "Plan your transfer to clear BEFORE booking. Amex/Chase/Capital One transfers are usually instant; Marriott is 4 days; Citi takes 1-3 days. Or use a different program (with holds) to book the same award."
   },
@@ -460,6 +521,12 @@
     },
     "bilt": {
       "instant_or_minutes": ["United", "AA", "Virgin Atlantic", "Aeroplan", "Hyatt", "Marriott", "Hilton", "IHG", "Flying Blue", "Cathay", "Turkish", "Avianca"]
+    },
+    "livelo": {
+      "typical": "Minutes for Smiles, LATAM Pass, Azul when the campaign is live. Irreversible. Confirm on livelo.com.br. This toolkit never initiates a transfer."
+    },
+    "esfera": {
+      "typical": "Minutes to hours. Confirm on esfera.com.vc. Irreversible."
     }
   }
 }

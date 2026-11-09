@@ -1,7 +1,7 @@
 {
   "_meta": {
     "description": "Which loyalty programs can book which airlines for award flights. Covers alliance-based, bilateral, and cross-alliance partnerships. Use this to determine if a user can actually redeem miles on a specific airline.",
-    "last_updated": "2026-03-31",
+    "last_updated": "2026-11-09",
     "staleness_days": 90,
     "notes": "AUDITED 2026-03-31: Fixed VA SkyTeam list (was 4 airlines, now 18), VA online_booking (was false), Iberia/Qatar/Korean Air incomplete alliance lists, Oman Air added to all oneworld programs, TAROM deduped from Flying Blue, Aeroplan Citi TY removed (no direct transfer). Partner availability changes. Always verify on the booking program's website before committing."
   },
@@ -91,7 +91,7 @@
         "oneworld": ["Alaska Airlines", "American Airlines", "British Airways", "Cathay Pacific", "Fiji Airways", "Finnair", "Iberia", "Japan Airlines", "Malaysia Airlines", "Oman Air", "Qantas", "Qatar Airways", "Royal Air Maroc", "Royal Jordanian", "SriLankan Airlines"],
         "non_alliance": ["Etihad (bilateral)", "JetBlue (Northeast Alliance remnant)", "GOL"]
       },
-      "transfer_from": ["Citi TY (1:1)"],
+      "transfer_from": ["Citi TY (1:1)", "Livelo (1:1, verify partner still listed)"],
       "chart_type": "dynamic",
       "search_url": "https://www.aa.com/aadvantage-program/miles/redeem",
       "phone": "1-800-882-8880",
@@ -121,7 +121,7 @@
         "oneworld": ["Alaska Airlines", "American Airlines", "British Airways", "Cathay Pacific", "Fiji Airways", "Finnair", "Iberia", "Japan Airlines", "Malaysia Airlines", "Oman Air", "Qantas", "Qatar Airways", "Royal Air Maroc", "Royal Jordanian", "SriLankan Airlines"],
         "non_alliance": ["LATAM (select routes)"]
       },
-      "transfer_from": ["Amex MR (1:1)", "Bilt (1:1)", "Capital One (1:1)", "Chase UR (1:1)", "Citi TY (via BA)"],
+      "transfer_from": ["Amex MR (1:1)", "Bilt (1:1)", "Capital One (1:1)", "Chase UR (1:1)", "Citi TY (via BA)", "Livelo (1:1, verify)", "Esfera (1:1, verify)"],
       "chart_type": "distance_based",
       "search_url": "https://www.iberia.com",
       "online_booking": true,
@@ -135,7 +135,7 @@
         "oneworld": ["Alaska Airlines", "American Airlines", "British Airways", "Cathay Pacific", "Fiji Airways", "Finnair", "Iberia", "Japan Airlines", "Malaysia Airlines", "Oman Air", "Qantas", "Qatar Airways", "Royal Air Maroc", "Royal Jordanian", "SriLankan Airlines"],
         "non_alliance": []
       },
-      "transfer_from": ["Amex MR (1:1)", "Bilt (1:1)", "Capital One (1:1)", "Chase UR (1:1)", "Citi TY (1:1)"],
+      "transfer_from": ["Amex MR (1:1)", "Bilt (1:1)", "Capital One (1:1)", "Chase UR (1:1)", "Citi TY (1:1)", "Livelo (1:1, verify)"],
       "chart_type": "distance_based",
       "search_url": "https://www.qatarairways.com",
       "online_booking": true,
@@ -149,7 +149,7 @@
         "skyteam": ["Aerolíneas Argentinas", "Aeromexico", "Air Europa", "Air France", "China Airlines", "China Eastern", "Delta", "Garuda Indonesia", "Kenya Airways", "KLM", "Korean Air", "Middle East Airlines", "SAS", "Saudia", "TAROM", "Vietnam Airlines", "Virgin Atlantic", "XiamenAir"],
         "non_alliance": []
       },
-      "transfer_from": ["Amex MR (1:1)", "Bilt (1:1)", "Capital One (1:1)", "Chase UR (1:1)", "Citi TY (1:1)"],
+      "transfer_from": ["Amex MR (1:1)", "Bilt (1:1)", "Capital One (1:1)", "Chase UR (1:1)", "Citi TY (1:1)", "Livelo (1:1, verify)"],
       "chart_type": "dynamic",
       "search_url": "https://www.airfrance.com or https://www.klm.com",
       "phone": "1-800-237-2747",
@@ -308,6 +308,48 @@
       "phone": "1-800-742-3333",
       "online_booking": true,
       "notes": "Best way to book Singapore Airlines Suites (the gold standard of first class). Also books Star Alliance partners. Low surcharges on SQ metal. Waitlist feature available."
+    },
+
+    "smiles": {
+      "display_name": "GOL Smiles",
+      "alliance": "none",
+      "bookable_airlines": {
+        "own_metal": ["GOL"],
+        "non_alliance": ["Air France", "KLM", "Copa", "Aerolineas Argentinas", "Air Canada", "Emirates", "TAP", "Aeromexico", "Etihad"]
+      },
+      "transfer_from": ["Livelo (1:1 + campaign bonus)", "Esfera (1:1 + campaign bonus)", "Itau Iupp (1:1)", "Nubank (1:1)", "C6 Atomos (1:1)", "Inter Loop (1:1)"],
+      "chart_type": "dynamic",
+      "search_url": "https://www.smiles.com.br",
+      "online_booking": true,
+      "notes": "Brazilian program. Partner list changes — verify on smiles.com.br. No public award hold. Livelo/Esfera bonuses (not the 1:1 baseline) set the milheiro. This toolkit never logs in, buys, or tickets. Seats.aero source: smiles."
+    },
+
+    "latam_pass": {
+      "display_name": "LATAM Pass",
+      "alliance": "none",
+      "bookable_airlines": {
+        "own_metal": ["LATAM"],
+        "non_alliance": ["Delta", "Aeromexico", "Qatar (verify)"]
+      },
+      "transfer_from": ["Livelo (1:1 + campaign bonus)", "Esfera (1:1 + campaign bonus)", "Itau Iupp (1:1)", "Nubank (1:1)", "C6 Atomos (1:1)", "Inter Loop (1:1)"],
+      "chart_type": "dynamic",
+      "search_url": "https://www.latamairlines.com",
+      "online_booking": true,
+      "notes": "Left oneworld in 2020. JV with Delta. Seats.aero may not index LATAM Pass — search the LATAM site. Confirm partners live. No public hold."
+    },
+
+    "azul_tudoazul": {
+      "display_name": "Azul Fidelidade (TudoAzul)",
+      "alliance": "none",
+      "bookable_airlines": {
+        "own_metal": ["Azul"],
+        "non_alliance": ["United", "Copa", "TAP", "JetBlue", "Turkish", "Emirates", "ITA"]
+      },
+      "transfer_from": ["Livelo (1:1 + campaign bonus)", "Esfera (1:1 + campaign bonus)", "Itau Iupp (1:1)", "Nubank (1:1)", "C6 Atomos (1:1)", "Inter Loop (1:1)"],
+      "chart_type": "dynamic",
+      "search_url": "https://www.voeazul.com.br",
+      "online_booking": true,
+      "notes": "Densest Nordeste domestic network. TAP partnership matters for REC/FOR-LIS. Seats.aero source: azul. No public hold. Verify partners on voeazul.com.br."
     }
   },
 
@@ -353,6 +395,20 @@
       "to_alliance": "skyteam",
       "why": "Same alliance but different economics. Flying Blue often prices Delta flights cheaper than SkyMiles does, plus free stopovers.",
       "transfer_currencies": ["Amex MR", "Bilt", "Capital One", "Chase UR", "Citi TY"]
+    },
+    {
+      "name": "Livelo → TAP Miles&Go / Azul → TAP",
+      "from_alliance": "none",
+      "to_alliance": "star_alliance",
+      "why": "From Natal, Recife and Fortaleza, TAP Lisboa is the natural Europe gateway. Livelo (and some Brazilian banks) transfer to TAP; Azul also partners with TAP. Always quote REC and FOR, not just NAT, and confirm the partner is still listed before recommending a transfer.",
+      "transfer_currencies": ["Livelo", "Esfera", "C6 Atomos"]
+    },
+    {
+      "name": "Livelo → Qatar Avios / Iberia Avios / AAdvantage",
+      "from_alliance": "none",
+      "to_alliance": "oneworld",
+      "why": "When Livelo lists Qatar, Iberia or AA, a Brazilian transferable currency reaches oneworld without a US card. Confirm the partner on livelo.com.br — lists change. Position NAT-GRU for long-haul.",
+      "transfer_currencies": ["Livelo"]
     }
   ]
 }

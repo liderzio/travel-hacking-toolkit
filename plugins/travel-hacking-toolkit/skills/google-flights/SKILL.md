@@ -115,7 +115,7 @@ Parse into a markdown table (see Output Format below).
 
 Different country markets return different prices for the same route. Always try:
 
-1. **Departure country market first** (`&gl=US` for flights from the US)
+1. **Departure country market first** (`&gl=BR` for this Brazil fork; `&gl=US` only for US-origin itineraries)
 2. **Destination country market** (`&gl=JP` for flights to Japan)
 3. **Ask the user** before trying additional markets
 

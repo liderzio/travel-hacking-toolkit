@@ -26,6 +26,7 @@ Search every available source for a route and present one unified comparison. Co
 
 ## When to Use
 
+- "Find me the best way to get from NAT to LIS in August"
 - "Find me the best way to get from SFO to CDG in August"
 - "Should I pay cash or use points for this flight?"
 - "Compare all options for SFO to NRT business class"
@@ -44,11 +45,13 @@ Run these in parallel where possible. **Never fail silently.** If a source error
 | Google Flights | `google-flights` | ~10s | Browser-automated. All airlines including Southwest cash. Good cross-check. |
 | Skiplagged | web search | ~5s | Hidden city ticketing. Often finds significantly cheaper fares. Search `skiplagged.com/flights/{origin}/{dest}/{date}`. |
 | Kiwi.com | web search | ~5s | Creative routings, self-transfer combos, multi-city. Search `kiwi.com`. |
-| Southwest | `southwest` | ~20s | Patchright, Docker only. Points + cash for all 4 fare classes. Only needed when SW flies the route. |
+| Southwest | `southwest` | ~20s | Patchright, Docker only. Points + cash for all 4 fare classes. Only needed when SW flies the route (skip for NAT/REC/FOR). |
 
 **Skiplagged and Kiwi:** Use web search (tavily or exa) to find their prices. They don't have MCP skills but their URLs are predictable. Always note that Skiplagged fares have restrictions (can't check bags, must use the "missed" connection city as destination).
 
-**Southwest:** Run the `southwest` skill if SW flies the route. Include SW Rapid Rewards points in the comparison table as a separate currency. The `lessons-learned` skill has the full details on SW specifics (fare class requirements, Companion Pass math, GDS gap).
+**Southwest:** Run the `southwest` skill if SW flies the route (US domestic only for this Brazil fork). Include SW Rapid Rewards points in the comparison table as a separate currency. The `lessons-learned` skill has the full details on SW specifics (fare class requirements, Companion Pass math, GDS gap).
+
+**Brazil fork:** Default origin NAT; also search REC and FOR in parallel. Google Flights `gl=BR`, Ignav `market: "BR"`. Cash in BRL. Brazilian awards: Smiles, LATAM Pass (site), Azul. Optimize via Livelo/Esfera/Iupp/Nubank/C6/Inter using `transfer-partners` + `milheiro`.
 
 **SerpAPI is optional.** Only use if the user asks for Google Hotels or destination discovery.
 

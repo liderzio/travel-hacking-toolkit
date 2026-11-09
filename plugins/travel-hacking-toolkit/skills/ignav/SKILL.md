@@ -86,7 +86,7 @@ curl -s -X POST "https://ignav.com/api/fares/booking-links" \
 | `departure_time_range` | object | `{"earliest_hour": 8, "latest_hour": 20}` |
 | `airlines_include` | array | Only these airline codes |
 | `airlines_exclude` | array | Exclude these airline codes |
-| `market` | string | Country code for pricing (default: "US"). Different markets return different prices. |
+| `market` | string | Country code for pricing (default: "US"). This Brazil fork should send `"BR"`. Different markets return different prices. |
 
 ## Response Structure
 

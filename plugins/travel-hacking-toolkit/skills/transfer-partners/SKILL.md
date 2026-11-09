@@ -60,13 +60,19 @@ Seats.aero source names map to `transfer-partners.json` keys:
 | `turkish` | `turkish` | Bilt (1:1), Capital One (1:1), Citi TY (1:1) |
 | `eurobonus` | (no direct transfer) | N/A |
 | `aeromexico` | `aeromexico` | Amex MR (1:1.6), Capital One (1:1), Citi TY (1:1) |
-| `smiles` | (no direct transfer) | N/A |
+| `smiles` | `smiles` | Livelo (1:1 + bonus), Esfera (1:1 + bonus), Iupp (1:1), Nubank (1:1), C6 Atomos (1:1), Inter Loop (1:1) |
+| `azul` | `azul` | Livelo, Esfera, Iupp, Nubank, C6 Atomos, Inter Loop (all typically 1:1 + campaign bonus) |
+| LATAM Pass (often missing from Seats.aero) | `latam_pass` | Same Brazilian currencies as Smiles. Search latam.com directly. |
 | `finnair` | `finnair` | Capital One (1:1) |
 | `lufthansa` | (no direct transfer) | N/A |
 | `ethiopian` | (no direct transfer) | N/A |
 | `saudia` | (no direct transfer) | N/A |
 
 Programs with "no direct transfer" can only be booked by earning miles directly or through alliance partner bookings.
+
+Brazilian coalition keys also have a `coalitions` object (e.g. Iupp/Nubank/C6/Inter → Livelo). When tracing reachability, merge `airlines`, `hotels`, **and** `coalitions`.
+
+**Brazilian bonuses are not in `data/transfer-bonuses.json`** (that file tracks Amex/Chase/Citi/Cap One/Bilt). For Livelo/Esfera campaigns, load `brazil-deals`, extract the dated bonus, and run `milheiro transfer`. Never copy a blog milheiro as a live quote.
 
 ### Step 3: Calculate Effective Cost
 
@@ -120,7 +126,7 @@ After the table:
 jq -r '
   to_entries | .[] | select(.key != "_meta") |
   .key as $currency | .value.display_name as $name |
-  (.value.airlines // {}) + (.value.hotels // {}) |
+  (.value.airlines // {}) + (.value.hotels // {}) + (.value.coalitions // {}) |
   to_entries[] | select(.key == "PROGRAM_KEY") |
   "\($name): \(.value.ratio):1 → \(.value.program)"
 ' data/transfer-partners.json
@@ -137,7 +143,7 @@ MILES=55000
 jq -r --arg prog "$PROGRAM" --argjson miles $MILES '
   to_entries | .[] | select(.key != "_meta") |
   .key as $currency | .value.display_name as $name |
-  ((.value.airlines // {}) + (.value.hotels // {}))[$prog] // null |
+  ((.value.airlines // {}) + (.value.hotels // {}) + (.value.coalitions // {}))[$prog] // null |
   select(. != null) |
   "\($name): \(($miles / .ratio) | floor) points (ratio \(.ratio):1)"
 ' data/transfer-partners.json
@@ -155,7 +161,7 @@ echo '[
   .[] | .program as $prog | .miles as $miles |
   ($tp[0] | to_entries | .[] | select(.key != "_meta") |
     .value.display_name as $name |
-    ((.value.airlines // {}) + (.value.hotels // {}))[$prog] // null |
+    ((.value.airlines // {}) + (.value.hotels // {}) + (.value.coalitions // {}))[$prog] // null |
     select(. != null) |
     {currency: $name, program: $prog, miles: $miles, points_needed: (($miles / .ratio) | floor), ratio: .ratio}
   )

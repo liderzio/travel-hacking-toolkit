@@ -1,0 +1,184 @@
+{
+  "_meta": {
+    "last_updated": "2026-11-09",
+    "staleness_days": 30,
+    "description": "Brazilian loyalty programs, bank points, club tiers, and baseline transfer ratios. Ratios are typical 1:1 baselines WITHOUT promotional bonuses. Club monthly prices and current bonus percentages change constantly — never treat numbers in this file as live offers. Recompute with the milheiro calculator using the price the user (or a deal post) just quoted, then confirm on the program website.",
+    "locale": "pt-BR",
+    "currency": "BRL",
+    "hard_rules": [
+      "Never log into loyalty, bank, or club accounts.",
+      "Never buy miles, transfer points, or issue tickets.",
+      "Never hardcode a blog or app price as a current fact.",
+      "Always tell the user to confirm ratio, bonus %, and availability on the program site before moving points."
+    ],
+    "sources": [
+      "https://www.livelo.com.br",
+      "https://www.esfera.com.vc",
+      "https://www.smiles.com.br",
+      "https://www.latam.com",
+      "https://www.voeazul.com.br",
+      "https://www.passageirodeprimeira.com",
+      "https://www.melhoresdestinos.com.br"
+    ]
+  },
+  "home_airports": {
+    "primary": {
+      "iata": "NAT",
+      "name": "Aeroporto Internacional de Natal / Sao Goncalo do Amarante",
+      "metro": "Natal, RN",
+      "notes": "Base padrao deste fork. GOL, LATAM e Azul operam domestico. Long-haul e TAP costumam exigir posicionamento (GRU/GIG/BSB) ou aeroporto alternativo."
+    },
+    "alternates": [
+      {
+        "iata": "REC",
+        "name": "Aeroporto Internacional do Recife / Guararapes",
+        "metro": "Recife, PE",
+        "notes": "Melhor oferta internacional do Nordeste (TAP LIS e outros). Sempre cotar REC junto com NAT em viagens long-haul."
+      },
+      {
+        "iata": "FOR",
+        "name": "Aeroporto Internacional de Fortaleza / Pinto Martins",
+        "metro": "Fortaleza, CE",
+        "notes": "TAP Lisboa e malha domestica forte. Cotar FOR junto com NAT/REC."
+      }
+    ],
+    "positioning_hubs": ["GRU", "GIG", "BSB", "CNF"],
+    "search_rule": "Toda busca saindo do usuario comeca em NAT e tambem cotar REC e FOR. Para premio long-haul, cotar NAT + posicionamento ate o hub e o premio a partir do hub. Nao assumir que TAP, Qatar ou Delta partem de NAT."
+  },
+  "airline_programs": {
+    "smiles": {
+      "display_name": "Smiles (GOL)",
+      "airline": "GOL Linhas Aereas",
+      "iata": "G3",
+      "alliance": "none",
+      "seats_aero_source": "smiles",
+      "search_url": "https://www.smiles.com.br",
+      "chart_type": "dynamic",
+      "typical_partners": ["GOL", "Air France", "KLM", "Aerolineas Argentinas", "Copa", "Air Canada", "Emirates", "TAP", "Aeromexico", "Etihad"],
+      "notes": "Programa da GOL. Parcerias mudam; confirmar no site Smiles quem e resgatavel hoje. Compra de milhas e bonus de transferencia Livelo/Esfera sao o jogo principal no Brasil. Clube Smiles da milhas mensais + bonus extra em compra/transferencia.",
+      "hold_policy": "Nao ha hold publico confiavel no estilo AA 24h. Trate transferencia como especulativa: so oriente o usuario a transferir depois de ver a tarifa premio aberta no site.",
+      "phone_br": "Confirme o numero atual em smiles.com.br/atendimento"
+    },
+    "latam_pass": {
+      "display_name": "LATAM Pass",
+      "airline": "LATAM Airlines",
+      "iata": "LA",
+      "alliance": "none (saiu da oneworld em 2020)",
+      "seats_aero_source": null,
+      "search_url": "https://www.latamairlines.com",
+      "chart_type": "dynamic",
+      "typical_partners": ["LATAM", "Delta", "Aeromexico", "Qatar", "outros bilaterais — verificar"],
+      "notes": "LATAM nao esta em alianca global. JV com Delta. LATAM Pass e o caminho natural para metal LATAM na America do Sul e para conectar com Delta. Seats.aero pode nao cobrir LATAM Pass — buscar no site da LATAM.",
+      "hold_policy": "Sem hold publico documentado. Confirme disponibilidade no site antes de qualquer transferencia.",
+      "phone_br": "Confirme o numero atual em latam.com"
+    },
+    "azul": {
+      "display_name": "Azul Fidelidade (TudoAzul)",
+      "airline": "Azul Linhas Aereas",
+      "iata": "AD",
+      "alliance": "none",
+      "seats_aero_source": "azul",
+      "search_url": "https://www.voeazul.com.br",
+      "chart_type": "dynamic",
+      "typical_partners": ["Azul", "United", "Copa", "TAP", "JetBlue", "Turkish", "Emirates", "ITA"],
+      "notes": "TudoAzul e o programa da Azul. Parceria com United (United pode emitir Azul; Azul emite United em alguns trechos). TAP e parceira importante para Europa via LIS. Malha domestica da Azul e a mais densa do Nordeste.",
+      "hold_policy": "Sem hold publico documentado. Confirme no site Azul.",
+      "phone_br": "Confirme o numero atual em voeazul.com.br"
+    }
+  },
+  "transferable_currencies": {
+    "livelo": {
+      "display_name": "Livelo",
+      "type": "coalizao / pontos transferiveis",
+      "operators": ["Banco do Brasil", "Bradesco", "outros emissores parceiros"],
+      "notes": "A moeda transferivel mais importante do Brasil. Baseline tipico 1:1 para as tres cias aereas nacionais e varios programas internacionais. Bonus de transferencia (40-100%+) e o que define o milheiro. Clube Livelo adiciona bonus extra em cima da promo. NUNCA use um percentual de bonus antigo como vigente.",
+      "club": "clube_livelo"
+    },
+    "esfera": {
+      "display_name": "Esfera (Santander)",
+      "type": "coalizao / pontos transferiveis",
+      "operators": ["Santander"],
+      "notes": "Programa de pontos do Santander. Transfere para cias aereas e hoteis. Bonus de transferencia frequentes. Nao confundir Esfera (moeda) com o cartao Santander em si.",
+      "club": null
+    },
+    "iupp": {
+      "display_name": "Itaú Iupp",
+      "type": "pontos de banco",
+      "operators": ["Itau"],
+      "notes": "Pontos Iupp do Itau. Cartoes Uniclass/Personnalite costumam ter melhor acumulo, nao necessariamente ratio diferente. Transfere para Smiles, LATAM Pass, Azul e, em alguns fluxos, para Livelo. Confirme o destino no app Itau antes de recomendar.",
+      "club": null
+    },
+    "nubank": {
+      "display_name": "Nubank Rewards / Ultravioleta",
+      "type": "pontos de banco",
+      "operators": ["Nubank"],
+      "notes": "Ultravioleta e o cartao premium; o saldo e em pontos Nubank. Transferencias tipicas para Smiles, LATAM Pass, Azul, Livelo e Accor. Ratio e destinos mudam — confirmar no app. Nao inventar parceiro.",
+      "club": null
+    },
+    "c6_atomos": {
+      "display_name": "C6 Átomos",
+      "type": "pontos de banco",
+      "operators": ["C6 Bank"],
+      "notes": "Átomos do C6. Destinos tipicos: Smiles, LATAM Pass, Azul, TAP, Livelo, Accor. Carbon e outros niveis mudam o acumulo, nao o ratio de transferencia. Confirme no app C6.",
+      "club": null
+    },
+    "inter_loop": {
+      "display_name": "Inter Loop",
+      "type": "pontos de banco",
+      "operators": ["Banco Inter"],
+      "notes": "Loop e o programa do Inter. Destinos tipicos: Smiles, LATAM Pass, Azul, Livelo. Win/Win+ mudam o acumulo. Confirme no Inter.",
+      "club": null
+    }
+  },
+  "clubs": {
+    "_warning": "Mensalidades e milhas/pontos por plano mudam o tempo todo. Este arquivo lista so a ESTRUTURA dos planos (faixas de milhas mensais). O usuario informa o preco vigente. A calculadora nunca assume um preco de clube.",
+    "clube_smiles": {
+      "program": "smiles",
+      "display_name": "Clube Smiles",
+      "what_it_does": "Credita milhas Smiles todo mes. Assinantes costumam receber bonus extra na compra de milhas e nas transferencias de coalizoes (Livelo/Esfera). Pagamento anual às vezes inclui milhas extras.",
+      "typical_plan_keys": ["1000", "2000", "3000", "5000", "7000", "10000"],
+      "plan_key_meaning": "Milhas creditadas por mes, nao o preco. Um plano 1000 credita 1.000 milhas/mes.",
+      "bonus_stacking": "O bonus de clube em compra/transferencia e um percentual separado da promo publica. Banners BR quase sempre somam (80% + 30% clube = 110%). Use modo additive na calculadora a menos que o regulamento diga que os bonus multiplicam.",
+      "how_to_price": "Peca ao usuario a mensalidade vigente (ou extraia de um post COM a data). Nunca reuse um valor de um post antigo. Calcule milheiro do clube com `calc_milheiro.py club`."
+    },
+    "clube_livelo": {
+      "program": "livelo",
+      "display_name": "Clube Livelo",
+      "what_it_does": "Credita pontos Livelo todo mes. Assinantes costumam receber percentual extra nas transferencias para cias aereas, empilhavel com a promo publica.",
+      "typical_plan_keys": ["1000", "2000", "5000", "7000", "10000"],
+      "plan_key_meaning": "Pontos Livelo por mes.",
+      "bonus_stacking": "Bonus de clube em transferencia e o grande valor. Some ao bonus da campanha (modo additive) salvo regulamento em contrario.",
+      "how_to_price": "Mensalidade vigente + pontos/mes + qualquer bonus de adesao informado pelo usuario. Nao invente o preco."
+    },
+    "clube_latam": {
+      "program": "latam_pass",
+      "display_name": "Clube LATAM Pass",
+      "what_it_does": "Credita pontos LATAM Pass mensalmente. Pode incluir descontos em passagens LATAM e bonus em compras de pontos.",
+      "typical_plan_keys": ["1000", "2000", "5000", "10000"],
+      "plan_key_meaning": "Pontos LATAM Pass por mes. Confirme a grade atual no site — nomes de plano mudam.",
+      "bonus_stacking": "Bonus de compra de pontos para clubistas e separado da promo. Usuario informa os dois percentuais.",
+      "how_to_price": "Mensalidade vigente / pontos do mes. Inclua milhas de adesao so se o usuario confirmar que ainda valem."
+    },
+    "clube_azul": {
+      "program": "azul",
+      "display_name": "Clube Azul",
+      "what_it_does": "Credita pontos Azul Fidelidade mensalmente. Clubistas costumam ter bonus extra na compra de pontos.",
+      "typical_plan_keys": ["1000", "2000", "5000", "10000"],
+      "plan_key_meaning": "Pontos Azul por mes.",
+      "bonus_stacking": "Additive por padrao.",
+      "how_to_price": "Mensalidade vigente / pontos do mes. Nao copie preco de post antigo."
+    }
+  },
+  "acquisition_heuristics": {
+    "_warning": "Faixas de milheiro sao heuristicas da comunidade, NAO valuacoes publicadas. Inflacao, desvalorizacao de tabela e mix de rotas mudam o que e 'barato'. Use so para rotular uma oferta que o usuario ja cotou.",
+    "unit": "BRL por 1.000 milhas (custo do milheiro)",
+    "labels": [
+      {"max_inclusive": 12, "label": "excepcional", "meaning": "Compra/transferencia muito abaixo do usual. Vale a pena se houver destino concreto em 6-12 meses."},
+      {"max_inclusive": 18, "label": "bom", "meaning": "Custo de aquisicao saudavel para Smiles/LATAM/Azul na pratica recente."},
+      {"max_inclusive": 25, "label": "ok", "meaning": "Aceitavel se o resgate ja esta mapeado e o valor do milheiro no premio for bem maior."},
+      {"max_inclusive": 35, "label": "fraco", "meaning": "So faz sentido com resgate imediato de altissimo valor ou pontos expirando."},
+      {"max_inclusive": null, "label": "ruim", "meaning": "Pagar cash ou esperar promo quase sempre ganha."}
+    ],
+    "decision_rule": "Compre/transira só quando (1) o custo do milheiro da oferta atual estiver em excepcional/bom OU (2) o valor do milheiro no resgate concreto for >= 2x o custo, mesmo que o custo seja so ok. Sempre compare com a tarifa cash em BRL."
+  }
+}

@@ -18,6 +18,7 @@ api_key: Uses individual skill keys
 - `award-holds` — per-program hold rules; affects transfer timing decisions
 - `round-the-world` — when the trip request implies 3+ stops or multiple regions, RTW products may be cheaper than separate awards
 - `status-match` — when a user mentions wanting status or asks about elite tier shortcuts; covers free direct matches, paid concierge fees, and once-per-lifetime warnings
+- `brazil-loyalty` / `milheiro` / `brazil-deals` — Brazilian programs, BRL milheiro math, dated promo sources. Default origin NAT; also quote REC and FOR.
 
 
 # Trip Planner
@@ -30,6 +31,7 @@ Orchestrates `compare-flights`, `compare-hotels`, `transfer-partners`, and `trip
 
 ## When to Use
 
+- "Planeja uma viagem a Lisboa em agosto saindo de Natal"
 - "Plan a trip to Paris Aug 11-15"
 - "What's the cheapest way to do SFO to Tokyo for a week in September?"
 - "How much would a trip to Stockholm cost in points vs cash?"
@@ -50,7 +52,7 @@ Extract from the user's request:
 
 | Parameter | Example | Required |
 |-----------|---------|----------|
-| Origin | SFO | Yes |
+| Origin | NAT (default this fork; also quote REC and FOR) | Default: NAT |
 | Destination | Paris / CDG | Yes |
 | Departure date | 2026-08-11 | Yes |
 | Return date | 2026-08-15 | Yes (assume one-way if not given) |

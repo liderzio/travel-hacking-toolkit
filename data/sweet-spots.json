@@ -1,7 +1,7 @@
 {
   "_meta": {
     "description": "Award flight and hotel sweet spots. High-value redemptions where points deliver outsized value compared to cash prices. Verified against current award charts as of last_updated.",
-    "last_updated": "2026-03-21",
+    "last_updated": "2026-11-09",
     "staleness_days": 60,
     "notes": "Turkish Miles&Smiles devalued Feb 15, 2025 (connections now priced separately). Emirates new partner chart March 4, 2026 (rates dropped up to 76%). Sweet spots change with program devaluations. Re-verify chart rates before recommending. 2026-07-20: added 7 transatlantic/Oceania-adjacent flight sweet spots from community forks. ANA rates verified against the post-June-2025 chart (partner one-ways now bookable; US-Europe 27.5K/50K one-way) — beware ANA's still-hosted legacy chart pages. JAL per-route one-way rates did not verify and were replaced with its distance-based pricing model. Entries whose verified field says otherwise were not independently re-checked."
   },
@@ -561,6 +561,61 @@
       "booking": {
         "search_at": "ihg.com",
         "book_via": "ihg.com"
+      }
+    }
+  ],
+
+  "brazil_nordeste": [
+    {
+      "name": "TAP Lisboa from REC or FOR via Miles&Go or Azul",
+      "tier": "excellent",
+      "program": "TAP Miles&Go / Azul Fidelidade",
+      "airline": "TAP Air Portugal",
+      "alliance": "star_alliance",
+      "cabin": "varies",
+      "why": "From Natal the Europe play is usually Recife or Fortaleza, not NAT itself. Livelo (and some banks) transfer to TAP; Azul partners with TAP. Quote REC and FOR every time. Award rates are dynamic — do not cite a fixed mileage number from this file as live.",
+      "transfer_partners": ["Livelo", "Esfera", "C6 Atomos"],
+      "routing_note": "Confirm current TAP destinations from REC/FOR via wikipedia-airports before telling the user the route exists.",
+      "booking": {
+        "search_availability": "flytap.com, voeazul.com.br, Farejador de Milhas, Seats.aero",
+        "book_via": "Airline site. Toolkit never tickets.",
+        "tips": ["Always price NAT positioning vs originating at REC/FOR", "Watch Livelo TAP bonuses", "LIS is a stopover-friendly TAP feature — load the stopovers skill"]
+      }
+    },
+    {
+      "name": "Azul domestic Nordeste (NAT/REC/FOR)",
+      "tier": "good",
+      "program": "Azul Fidelidade",
+      "airline": "Azul",
+      "alliance": "none",
+      "why": "Azul is the dense Nordeste network. Cash fares spike on holidays; award space is the comparison that matters. Compute valor do milheiro in BRL against the live cash fare. Never reuse a blog award price.",
+      "transfer_partners": ["Livelo", "Esfera", "Iupp", "Nubank", "C6 Atomos", "Inter Loop"],
+      "booking": {
+        "search_at": "voeazul.com.br",
+        "book_via": "voeazul.com.br"
+      }
+    },
+    {
+      "name": "GOL Smiles domestic plus AF/KLM via GRU",
+      "tier": "good",
+      "program": "GOL Smiles",
+      "airline": "GOL / Air France / KLM",
+      "why": "Position NAT-GRU (or GIG) on GOL, then Smiles partners toward Europe. Livelo bonuses into Smiles are how Brazilians usually stock the account. Dynamic pricing — run milheiro against the live cash alternative.",
+      "transfer_partners": ["Livelo", "Esfera", "Iupp", "Nubank", "C6 Atomos", "Inter Loop"],
+      "booking": {
+        "search_at": "smiles.com.br",
+        "book_via": "smiles.com.br"
+      }
+    },
+    {
+      "name": "Qatar Qsuites or Iberia MAD via Livelo Avios (when listed)",
+      "tier": "excellent",
+      "program": "Qatar Privilege Club / Iberia Plus",
+      "why": "When Livelo lists Qatar or Iberia, a Brazilian currency reaches oneworld without a US card. Position via GRU. Confirm the partner is still on Livelo. Award charts and surcharges still apply — load points-valuations and booking-guidance.",
+      "transfer_partners": ["Livelo"],
+      "booking": {
+        "search_at": "qatarairways.com or iberia.com",
+        "book_via": "program site after confirming Livelo still lists the partner"
       }
     }
   ],

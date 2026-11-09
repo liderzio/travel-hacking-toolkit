@@ -1,0 +1,22 @@
+{
+  "_readme": "Copie este arquivo para profile.json (gitignorado) e preencha só o que quiser que o agente use. NUNCA commite profile.json — o repositorio e publico. Nao coloque nome, CPF, numero de cartao, familiares, senha, saldo real se nao quiser, nem PNR.",
+  "locale": "pt-BR",
+  "currency": "BRL",
+  "home_airport": "NAT",
+  "alternate_airports": ["REC", "FOR"],
+  "cabin_preference": "economy",
+  "travelers": 1,
+  "flexible_dates": true,
+  "programs": {
+    "livelo": { "balance": null, "club_tier": null },
+    "esfera": { "balance": null, "club_tier": null },
+    "iupp": { "balance": null, "club_tier": null },
+    "nubank": { "balance": null, "club_tier": null },
+    "c6_atomos": { "balance": null, "club_tier": null },
+    "inter_loop": { "balance": null, "club_tier": null },
+    "smiles": { "balance": null, "club_tier": null },
+    "latam_pass": { "balance": null, "club_tier": null },
+    "azul": { "balance": null, "club_tier": null }
+  },
+  "notes": "club_tier e a chave do plano (ex. 1000, 5000), nao o preco. Saldos sao opcionais — se null, o agente pede na hora ou usa raciocinio de sweet spot."
+}

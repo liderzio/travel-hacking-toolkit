@@ -103,14 +103,14 @@ If keys are missing and the user wants to add them, give them the right command 
 After setup (or now, if keys are already set), show 3-4 prompts scaled to what they have configured. Re-detect first to confirm.
 
 **No keys set:**
-- "Find me a cheap nonstop flight from NYC to London next month."
-- "What hotels are near the Eiffel Tower under $400/night?"
-- "How do I get from Bergen to Oslo by train?" (if they're in Scandinavia)
+- "Passagem barata de Natal para Sao Paulo no proximo mes."
+- "Compara NAT, Recife e Fortaleza para Lisboa em setembro."
+- "Find me a cheap nonstop flight from NYC to London next month." (if they ask US)
 
 **With Seats.aero:**
-- "Plan a 10-day Scandinavia trip in August on points."
-- "Cheapest business class to Tokyo for two in March."
-- "Find me one outsized redemption I'm not using."
+- "Planeja 10 dias em Lisboa saindo de NAT/REC/FOR em pontos."
+- "Business barata para Buenos Aires para duas pessoas em marco."
+- "Qual resgate Smiles/Azul estou deixando na mesa?"
 
 **With AwardWallet:**
 - "Show me my points balances and which programs are about to expire."
@@ -118,7 +118,7 @@ After setup (or now, if keys are already set), show 3-4 prompts scaled to what t
 
 End with a declarative statement (NOT a question, per the system prompt's PRE-OUTPUT GATE):
 
-> "You're set. Type `/travel-hacker:plan-trip` to start a guided trip plan, or describe a trip in plain English."
+> "Pronto. Use `/travel-hacker:plan-trip` para um roteiro guiado, ou descreva a viagem em portugues. Origem padrao NAT, alternativas REC e FOR. Copie `profile.example.json` para `profile.json` (gitignorado) se quiser saldos locais — nunca commite o arquivo real."
 
 ## Don't do this
 
